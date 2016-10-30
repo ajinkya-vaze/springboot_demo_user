@@ -5,7 +5,7 @@ import org.learning.springboot.schema.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
+import java.util.List;
 
 /**
  * Service class for user to interact with database
@@ -47,7 +47,7 @@ public class UserService {
         usersMap.put(1l, user);
     }*/
 
-    public Collection<User> getUsers() {
+    public List<User> getUsers() {
         return userRepository.findAll();
     }
 
@@ -57,21 +57,21 @@ public class UserService {
 
     public User updateUser(User toBeUpdated) throws UserNotFoundException {
         User user = userRepository.findById(toBeUpdated.getId());
-        if(user == null) {
+        if (user == null) {
             throw new UserNotFoundException(toBeUpdated.getId());
         }
         return userRepository.save(toBeUpdated);
     }
 
     public String deleteUser(long id) throws UserNotFoundException {
-        if(userRepository.findById(id) != null) {
+        if (userRepository.findById(id) != null) {
             userRepository.delete(id);
             return "Deleted user with id: " + id;
         }
         throw new UserNotFoundException(id);
     }
 
-    public User createUser(User newUser) throws Exception {
+    public User createUser(User newUser) {
         return userRepository.save(newUser);
     }
 }

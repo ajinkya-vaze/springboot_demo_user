@@ -1,13 +1,12 @@
 package org.learning.springboot.schema;
 
-import org.hibernate.annotations.*;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CascadeType;
 
 import javax.persistence.*;
-import javax.persistence.Entity;
 
 /**
- * Created by ajinkyav on 10/25/2016.
+ * @Author Ajinkya
  */
 @Entity
 public class User {
